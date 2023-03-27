@@ -50,10 +50,3 @@
     <img src="https://img.shields.io/github/followers/JorgeMFC.svg?style=for-the-badge&label=Follow" height="20"/>
   </a>
 </h3>
-
-<h3>
-  Luís Sousa
-  <a href="https://github.com/luisousa14?tab=followers">
-    <img src="https://img.shields.io/github/followers/luisousa14.svg?style=for-the-badge&label=Follow" height="20"/>
-  </a>
-</h3>
