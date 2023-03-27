@@ -1,0 +1,379 @@
+[{
+  "_id": {
+    "$oid": "621413666e423c5b9705644d"
+  },
+  "code": "F014",
+  "description": "# 14. Food contact surfaces: clean and sanitized"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705644e"
+  },
+  "code": "F046",
+  "description": "# 46. Signs posted; last inspection report available"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705644f"
+  },
+  "code": "W019",
+  "description": "Plumbing approved and maintained in good repair."
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056450"
+  },
+  "code": "F047",
+  "description": "# 48. Plan Review required for new or remodel construction"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056451"
+  },
+  "code": "F016",
+  "description": "# 16. Compliance with shelf stock tags, condition, displayed"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056452"
+  },
+  "code": "F055",
+  "description": "# 01a. Demonstration of knowledge"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056453"
+  },
+  "code": "F048",
+  "description": "# 47. Permits Available"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056454"
+  },
+  "code": "F002",
+  "description": "# 02. Communicable disease; reporting, restrictions & exclusions"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056455"
+  },
+  "code": "F028",
+  "description": "# 28. Fruits and vegetables washed as required"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056456"
+  },
+  "code": "F027",
+  "description": "# 27. Food separated and protected"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056457"
+  },
+  "code": "W023",
+  "description": "Floor maintained clean"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056458"
+  },
+  "code": "F033",
+  "description": "# 33. Nonfood-contact surfaces clean and in good repair"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056459"
+  },
+  "code": "F056",
+  "description": "# 10. Proper cooking time & temperatures"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705645a"
+  },
+  "code": "F032",
+  "description": "# 32. Food properly labeled & honestly presented"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705645b"
+  },
+  "code": "F034",
+  "description": "# 34. Warewashing facilities: Adequate, maintained, properly use, test strips available"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705645c"
+  },
+  "code": "F052",
+  "description": "# 01b. Food safety certification"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705645d"
+  },
+  "code": "F041",
+  "description": "# 41. Garbage and refuse properly disposed; facilities maintained"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705645e"
+  },
+  "code": "F026",
+  "description": "# 26. Approved thawing methods used, frozen food maintained frozen"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705645f"
+  },
+  "code": "F007",
+  "description": "# 07. Proper hot and cold holding temperatures"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056460"
+  },
+  "code": "F023",
+  "description": "# 23. No rodents, insects, birds, or animals"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056461"
+  },
+  "code": "W032",
+  "description": "Toilet room floor / walls / ceiling in good repair"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056462"
+  },
+  "code": "F017",
+  "description": "# 17. Compliance with Gulf Oyster Regulations"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056463"
+  },
+  "code": "F001",
+  "description": "# 01a. Demonstration of knowledge"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056464"
+  },
+  "code": "F040",
+  "description": "# 40. Plumbing: Plumbing in good repair, proper backflow devices"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056465"
+  },
+  "code": "F043",
+  "description": "# 43. Premises; personal/cleaning items; vermin-proofing"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056466"
+  },
+  "code": "F018",
+  "description": "# 18. Compliance with variance, specialized process, & HACCP Plan"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056467"
+  },
+  "code": "F042",
+  "description": "# 42. Toilet facilities: properly constructed, supplied, cleaned"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056468"
+  },
+  "code": "F058",
+  "description": "# 19. Consumer advisory provided for raw or undercooked foods"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056469"
+  },
+  "code": "F009",
+  "description": "# 09. Proper cooling methods"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705646a"
+  },
+  "code": "F004",
+  "description": "# 04. Proper eating, drinking, or tobacco use"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705646b"
+  },
+  "code": "F054",
+  "description": "# 52. Multiple Major Critical Violations / Increased Risk to Public Health"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705646c"
+  },
+  "code": "F022",
+  "description": "# 22. Sewage and wastewater properly disposed"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705646d"
+  },
+  "code": "W044",
+  "description": "Garbage / Rubbish receptacles maintained clean and sanitary"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705646e"
+  },
+  "code": "F010",
+  "description": "# 10. Proper cooking time & temperatures"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705646f"
+  },
+  "code": "F021",
+  "description": "# 21b. Water available"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056470"
+  },
+  "code": "F036",
+  "description": "# 36. Equipment, utensils and linens: storage and use"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056471"
+  },
+  "code": "F051",
+  "description": "# 49. Samples Collected"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056472"
+  },
+  "code": "F053",
+  "description": "# 21a. Hot Water Available"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056473"
+  },
+  "code": "F011",
+  "description": "# 11. Proper reheating procedures for hot holding"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056474"
+  },
+  "code": "F015",
+  "description": "# 15. Food obtained from approved source"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056475"
+  },
+  "code": "F025",
+  "description": "# 25. Personal cleanliness and hair restraints"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056476"
+  },
+  "code": "F057",
+  "description": "# 18. Compliance with variance, specialized process, & HACCP Plan"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056477"
+  },
+  "code": "F012",
+  "description": "# 12. Returned and reservice food"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056478"
+  },
+  "code": "F049",
+  "description": "# 50. Impoundment of unsanitary equipment or food"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056479"
+  },
+  "code": "F029",
+  "description": "# 29. Toxic substances properly identified, stored, used"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705647a"
+  },
+  "code": "W005",
+  "description": "Food elevated"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705647b"
+  },
+  "code": "F006",
+  "description": "# 06. Adequate handwashing facilities supplied & accessible"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705647c"
+  },
+  "code": "F005",
+  "description": "# 05. Hands clean and properly washed; gloves used properly"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705647d"
+  },
+  "code": "F039",
+  "description": "# 39. Wiping cloths: properly used and stored"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705647e"
+  },
+  "code": "W021",
+  "description": "Wall(s) maintained in good repair"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705647f"
+  },
+  "code": "F038",
+  "description": "# 38. Thermometers provided and accurate"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056480"
+  },
+  "code": "F037",
+  "description": "# 37. Adequate ventilation and lighting; designated areas, use"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056481"
+  },
+  "code": "F008",
+  "description": "# 08. Time as a public health control; procedures & records"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056482"
+  },
+  "code": "F013",
+  "description": "# 13. Food in good condition, safe and unadulterated"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056483"
+  },
+  "code": "F030",
+  "description": "# 30. Food properly stored; food storage containers identified"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056484"
+  },
+  "code": "F024",
+  "description": "# 24. Person in charge present and performs duties"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056485"
+  },
+  "code": "F031",
+  "description": "# 31. Consumer self service facilities properly constructed and maintained"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056486"
+  },
+  "code": "F003",
+  "description": "# 03. No discharge from eyes, nose, and mouth"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056487"
+  },
+  "code": "F035",
+  "description": "# 35. Equipment/Utensils - approved; installed; clean; good repair, capacity"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056488"
+  },
+  "code": "F050",
+  "description": "# 51. Permit Suspension"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b97056489"
+  },
+  "code": "F044",
+  "description": "# 44. Floors, walls and ceilings: properly built, maintained in good repair and clean"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705648a"
+  },
+  "code": "F045",
+  "description": "# 45. Sleeping quarters"
+},{
+  "_id": {
+    "$oid": "621413666e423c5b9705648b"
+  },
+  "code": "F019",
+  "description": "# 19. Consumer advisory provided for raw or undercooked foods"
+}]

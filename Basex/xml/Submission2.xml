@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.trabalhoPEI.pt/SubmissionRules"
+    xsi:schemaLocation="http://www.trabalhoPEI.pt/SubmissionRules SubmissionRules.xsd"
+    xmlns:c="http://www.trabalhoPEI.pt/CommonTypes"
+    xmlns:i = "http://www.trabalhoPEI.pt/InspectionsRules"
+    xmlns:vl = "http://www.trabalhoPEI.pt/ViolationsListRules">
+
+    <submissionInfo>
+        <submissionDate>2021-04-17T00:00:00.000</submissionDate>
+        <week>2021-04-11T00:00:00.000</week>
+        <year>2021</year>
+        <partner>André Fonseca</partner>
+    </submissionInfo>
+
+    <inspections>
+        <i:inspection>
+            <i:code>DXT77E09S</i:code>
+            <i:date>2021-04-12T00:00:00.000</i:date>
+            <i:facilityName>STAR COFFEE SHOP</i:facilityName>
+            <i:rating>
+                <i:score>80</i:score>
+                <i:grade>B</i:grade>
+            </i:rating>
+            <i:service>ROUTINE INSPECTION</i:service>
+            <i:address>
+                <c:address_description>3777 N DRAGON ROCK BLVD</c:address_description>
+                <c:city>LOS ANGELES</c:city>
+                <c:state>CA</c:state>
+                <c:zip_code>90077</c:zip_code>
+            </i:address>
+            <i:owner>
+                <i:owner_id>OW0778143</i:owner_id>
+                <i:owner_name>SKY COFFEE SHOP LLC</i:owner_name>
+            </i:owner>
+            <i:description>RESTAURANT (30-60) SEATS HIGH RISK</i:description>
+            <i:facility_status>ACTIVE</i:facility_status>
+            <i:violations>
+                <i:violation>
+                    <i:violation_code>F007</i:violation_code>
+                    <i:violation_status>OUT OF COMPLIANCE</i:violation_status>
+                </i:violation>
+            </i:violations>
+        </i:inspection>
+    
+        <i:inspection>
+            <i:code>DWF98E0FD</i:code>
+            <i:date>2021-04-18T00:00:00.000</i:date>
+            <i:facilityName>SOUTH'S</i:facilityName>
+            <i:rating>
+                <i:score>94</i:score>
+                <i:grade>A</i:grade>
+            </i:rating>
+            <i:service>ROUTINE INSPECTION</i:service>
+            <i:address>
+                <c:address_description>3872 N ROCK BRF</c:address_description>
+                <c:city>SAN JOSE</c:city>
+                <c:state>CA</c:state>
+                <c:zip_code>95912</c:zip_code>
+            </i:address>
+            <i:owner>
+                <i:owner_id>OW0253281</i:owner_id>
+                <i:owner_name>SOUTH COFFEE SHOP LLC</i:owner_name>
+            </i:owner>
+            <i:description>RESTAURANT (60-120) SEATS HIGH RISK</i:description>
+            <i:facility_status>ACTIVE</i:facility_status>
+            <i:violations>
+                <i:violation>
+                    <i:violation_code>F020</i:violation_code>
+                    <i:violation_status>OUT OF COMPLIANCE</i:violation_status>
+                </i:violation>
+            </i:violations>
+        </i:inspection>
+
+        <i:inspection>
+            <i:code>DIS9821SD</i:code>
+            <i:date>2021-04-15T00:00:00.000</i:date>
+            <i:facilityName>NORTH'S</i:facilityName>
+            <i:rating>
+                <i:score>91</i:score>
+                <i:grade>A</i:grade>
+            </i:rating>
+            <i:service>ROUTINE INSPECTION</i:service>
+            <i:address>
+                <c:address_description>3872 N FLY ROCK BHJ</c:address_description>
+                <c:city>SAN DIEGO</c:city>
+                <c:state>CA</c:state>
+                <c:zip_code>95021</c:zip_code>
+            </i:address>
+            <i:owner>
+                <i:owner_id>OW0210181</i:owner_id>
+                <i:owner_name>NORTH COFFEE SHOP LLC</i:owner_name>
+            </i:owner>
+            <i:description>RESTAURANT (15-45) SEATS MEDIUM RISK</i:description>
+            <i:facility_status>ACTIVE</i:facility_status>
+            <i:violations>
+                <i:violation>
+                    <i:violation_code>F027</i:violation_code>
+                    <i:violation_status>OUT OF COMPLIANCE</i:violation_status>
+                </i:violation>
+            </i:violations>
+        </i:inspection>
+    </inspections>
+
+    <violationsList>
+        <vl:violation>
+            <vl:violation_code>F033</vl:violation_code>
+            <vl:violation_description># 33. Nonfood-contact surfaces clean and in good repair</vl:violation_description>
+        </vl:violation>
+
+        <vl:violation>
+            <vl:violation_code>F007</vl:violation_code>
+            <vl:violation_description># 07. Proper hot and cold holding temperatures</vl:violation_description>
+        </vl:violation>
+
+        <vl:violation>
+            <vl:violation_code>F027</vl:violation_code>
+            <vl:violation_description># 27. Food separated and protected</vl:violation_description>
+        </vl:violation>
+    </violationsList>
+</submission>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.trabalhoPEI.pt/CommonTypes"
+           targetNamespace="http://www.trabalhoPEI.pt/CommonTypes"
+           elementFormDefault="qualified">
+
+            <xs:simpleType name = "codeType">
+                <xs:restriction base = "xs:string">
+                    <xs:pattern value="[A-Z0-9]{9}"/>
+                </xs:restriction>
+            </xs:simpleType>
+
+            <xs:simpleType name = "violationCodeType">
+                <xs:restriction base = "xs:string">
+                    <xs:minLength value="4"/>
+                    <xs:maxLength value="4"/>
+                    <xs:pattern value="[F].{0,999}"/>
+                </xs:restriction>
+            </xs:simpleType>
+
+            <xs:complexType name = "addressType">
+                <xs:sequence>
+                    <xs:element name = "address_description" type = "xs:string"/>
+                    <xs:element name = "city" type = "xs:string"/>
+                    <xs:element name = "state" type = "xs:string"/>
+                    <xs:element name = "zip_code" type = "zipCodeType"/>
+                </xs:sequence>
+            </xs:complexType>
+
+            <xs:simpleType name="zipCodeType">
+                <xs:restriction base = "xs:integer">
+                    <xs:pattern value="\d{5}"/>
+                </xs:restriction>
+            </xs:simpleType>
+</xs:schema>

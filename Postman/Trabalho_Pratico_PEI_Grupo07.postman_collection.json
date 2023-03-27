@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "1f2aa5af-50eb-46ce-ab5f-486e7002a5b2",
+		"name": "Trabalho_Pratico_PEI_Grupo07",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "export_XML",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let responseJson = xml2Json(responseBody);\r",
+							"let responseSubmissions = responseJson?.submissions?.submission;\r",
+							"let facilities = [];\r",
+							"let inspections = [];\r",
+							"let violations = [];\r",
+							"\r",
+							"let isArray = function(a) {\r",
+							"    return (!!a) && (a.constructor === Array);\r",
+							"};\r",
+							"\r",
+							"if(responseSubmissions != undefined || responseSubmissions != null){\r",
+							"    if(!isArray(responseSubmissions)){\r",
+							"        let tmpArray = [];\r",
+							"        tmpArray.push(responseSubmissions);\r",
+							"        responseSubmissions = tmpArray;\r",
+							"    }\r",
+							"\r",
+							"    responseSubmissions.forEach(submission => {\r",
+							"        let facility = {};\r",
+							"        let inspection = {}; \r",
+							"\r",
+							"        let submissionResponseViolationList = submission.violationsList[\"vl:violation\"];\r",
+							"        if(!isArray(submissionResponseViolationList)){\r",
+							"            let tmpArray = [];\r",
+							"            tmpArray.push(submissionResponseViolationList);\r",
+							"            submissionResponseViolationList = tmpArray;\r",
+							"        }\r",
+							"\r",
+							"        submissionResponseViolationList.forEach(violation => {\r",
+							"            let formattedViolation = {};\r",
+							"            formattedViolation.code = violation[\"vl:violation_code\"];\r",
+							"            formattedViolation.description = violation[\"vl:violation_description\"];\r",
+							"            violations.push(formattedViolation);\r",
+							"        });\r",
+							"\r",
+							"        inspection.submission_info = {};\r",
+							"        inspection.submission_info.partner = submission.submissionInfo.partner;\r",
+							"        inspection.submission_info.week = submission.submissionInfo.week;\r",
+							"        inspection.submission_info.submission_date = submission.submissionInfo.submissionDate;\r",
+							"\r",
+							"        let submissionResponseInspections = submission?.inspections[\"i:inspection\"];\r",
+							"        if(!isArray(submissionResponseInspections)){\r",
+							"            let tmpArray = [];\r",
+							"            tmpArray.push(submissionResponseInspections);\r",
+							"            submissionResponseInspections = tmpArray;\r",
+							"        }\r",
+							"\r",
+							"        submissionResponseInspections.forEach(submissionResponseInspection => {\r",
+							"            facility.address_info = {};\r",
+							"            facility.owner = {};\r",
+							"            facility.facility_name = submissionResponseInspection[\"i:facilityName\"];\r",
+							"            facility.address_info.address = submissionResponseInspection[\"i:address\"][\"c:address_description\"];\r",
+							"            facility.address_info.city = submissionResponseInspection[\"i:address\"][\"c:city\"];\r",
+							"            facility.address_info.state = submissionResponseInspection[\"i:address\"][\"c:state\"];\r",
+							"            facility.address_info.zipcode = submissionResponseInspection[\"i:address\"][\"c:zip_code\"];\r",
+							"            facility.owner.owner_id = submissionResponseInspection[\"i:owner\"][\"i:owner_id\"];\r",
+							"            facility.owner.owner_name = submissionResponseInspection[\"i:owner\"][\"i:owner_name\"];\r",
+							"\r",
+							"            inspection.facility = {};\r",
+							"            inspection.facility.facility_name = facility.facility_name;\r",
+							"            inspection.facility.city = facility.address_info.city;\r",
+							"            inspection.facility.state = facility.address_info.state;\r",
+							"            inspection.violations = [];\r",
+							"            inspection.code = submissionResponseInspection[\"i:code\"];\r",
+							"            inspection.date = submissionResponseInspection[\"i:date\"];\r",
+							"            inspection.rating = {};\r",
+							"            inspection.rating.score = submissionResponseInspection[\"i:rating\"][\"i:score\"];\r",
+							"            inspection.rating.grade = submissionResponseInspection[\"i:rating\"][\"i:grade\"];\r",
+							"            inspection.service = submissionResponseInspection[\"i:service\"];\r",
+							"            inspection.description = submissionResponseInspection[\"i:description\"];\r",
+							"\r",
+							"            let submissionResponseInspectionViolations = submissionResponseInspection.violations[\"i:violation\"];\r",
+							"            if(!isArray(submissionResponseInspectionViolations)){\r",
+							"                let tmpArray = [];\r",
+							"                tmpArray.push(submissionResponseInspectionViolations);\r",
+							"                submissionResponseInspectionViolations = tmpArray;\r",
+							"            }\r",
+							"\r",
+							"            submissionResponseInspectionViolations.forEach(submissionResponseInspectionViolation => {\r",
+							"                if(submissionResponseInspectionViolation != undefined){\r",
+							"                    let formattedViolation = {};\r",
+							"                    formattedViolation.violation_code = submissionResponseInspectionViolation[\"i:violation_code\"];\r",
+							"                    formattedViolation.violation_status = submissionResponseInspectionViolation[\"i:violation_status\"];\r",
+							"                    submissionResponseInspectionViolations.push(formattedViolation);\r",
+							"                    inspection.violations.push(formattedViolation);\r",
+							"                }\r",
+							"                \r",
+							"            });\r",
+							"            inspections.push(inspection);\r",
+							"            facilities.push(facility);\r",
+							"        });\r",
+							"    });\r",
+							"}\r",
+							"\r",
+							"//Remove duplicates\r",
+							"violations = violations.filter((v,i,a)=>a.findIndex(t=>(t.code===v.code))===i)\r",
+							"\r",
+							"//Remove duplicates\r",
+							"facilities = facilities.filter((v,i,a)=>a.findIndex(t=>(t.facility_name===v.facility_name && t.address_info.city===v.address_info.city))===i)\r",
+							"\r",
+							"pm.collectionVariables.set(\"parsedDataViolations\", JSON.stringify(violations));\r",
+							"pm.collectionVariables.set(\"parsedDataInspections\", JSON.stringify(inspections));\r",
+							"pm.collectionVariables.set(\"parsedDataFacilities\", JSON.stringify(facilities));\r",
+							"\r",
+							"console.log(JSON.stringify(violations));\r",
+							"console.log(JSON.stringify(inspections));\r",
+							"console.log(JSON.stringify(facilities));\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8984/export_xml",
+					"host": [
+						"localhost"
+					],
+					"port": "8984",
+					"path": [
+						"export_xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSubmission",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<submission xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" \r\n    xmlns=\"http://www.trabalhoPEI.pt/SubmissionRules\"\r\n    xsi:schemaLocation=\"http://www.trabalhoPEI.pt/SubmissionRules SubmissionRules.xsd\"\r\n    xmlns:c=\"http://www.trabalhoPEI.pt/CommonTypes\"\r\n    xmlns:i = \"http://www.trabalhoPEI.pt/InspectionsRules\"\r\n    xmlns:vl = \"http://www.trabalhoPEI.pt/ViolationsListRules\">\r\n\r\n    <submissionInfo>\r\n        <submissionDate>2017-12-30T00:00:00.000</submissionDate>\r\n        <week>2017-12-24T00:00:00.000</week>\r\n        <year>2017</year>\r\n        <partner>Joao</partner>\r\n    </submissionInfo>\r\n\r\n    <inspections>\r\n        <i:inspection>\r\n            <i:code>DAJ22E07B</i:code>\r\n            <i:date>2017-12-29T00:00:00.000</i:date>\r\n            <i:facilityName>HABITAT COFFEE SHOP 7</i:facilityName>\r\n            <i:rating>\r\n                <i:score>95</i:score>\r\n                <i:grade>A</i:grade>\r\n            </i:rating>\r\n            <i:service>ROUTINE INSPECTION</i:service>\r\n            <i:address>\r\n                <c:address_description>3708 N EAGLE ROCK BLVD 7</c:address_description>\r\n                <c:city>LOS ANGELES</c:city>\r\n                <c:state>CA</c:state>\r\n                <c:zip_code>90065</c:zip_code>\r\n            </i:address>\r\n            <i:owner>\r\n                <i:owner_id>OW0178123</i:owner_id>\r\n                <i:owner_name>GLASSELL COFFEE SHOP LLC</i:owner_name>\r\n            </i:owner>\r\n            <i:description>RESTAURANT (0-30) SEATS MODERATE RISK</i:description>\r\n            <i:facility_status>ACTIVE</i:facility_status>\r\n            <i:violations>\r\n                <i:violation>\r\n                    <i:violation_code>F033</i:violation_code>\r\n                    <i:violation_status>OUT OF COMPLIANCE</i:violation_status>\r\n                </i:violation>\r\n            </i:violations>\r\n        </i:inspection>\r\n    </inspections>\r\n\r\n    <violationsList>\r\n        <vl:violation>\r\n            <vl:violation_code>F033</vl:violation_code>\r\n            <vl:violation_description># 33. Nonfood-contact surfaces clean and in good repair</vl:violation_description>\r\n        </vl:violation>\r\n\r\n        <vl:violation>\r\n            <vl:violation_code>F007</vl:violation_code>\r\n            <vl:violation_description># 07. Proper hot and cold holding temperatures</vl:violation_description>\r\n        </vl:violation>\r\n\r\n        <vl:violation>\r\n            <vl:violation_code>F035</vl:violation_code>\r\n            <vl:violation_description># 35. Teste Teste Teste</vl:violation_description>\r\n        </vl:violation>\r\n    </violationsList>\r\n</submission>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8984/addSubmission",
+					"host": [
+						"localhost"
+					],
+					"port": "8984",
+					"path": [
+						"addSubmission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertManyInspections",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"dataSource\": \"Cluster0\", \r\n  \"database\" : \"SafeFood\", \r\n  \"collection\" : \"Inspections\", \r\n  \"documents\" : {{parsedDataInspections}}\r\n}"
+				},
+				"url": {
+					"raw": "https://data.mongodb-api.com/app/{{appid}}/endpoint/data/beta/action/insertMany",
+					"protocol": "https",
+					"host": [
+						"data",
+						"mongodb-api",
+						"com"
+					],
+					"path": [
+						"app",
+						"{{appid}}",
+						"endpoint",
+						"data",
+						"beta",
+						"action",
+						"insertMany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertManyViolations",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"dataSource\": \"Cluster0\", \r\n  \"database\" : \"SafeFood\", \r\n  \"collection\" : \"Violations\", \r\n  \"documents\" : {{parsedDataViolations}}\r\n}"
+				},
+				"url": {
+					"raw": "https://data.mongodb-api.com/app/{{appid}}/endpoint/data/beta/action/insertMany",
+					"protocol": "https",
+					"host": [
+						"data",
+						"mongodb-api",
+						"com"
+					],
+					"path": [
+						"app",
+						"{{appid}}",
+						"endpoint",
+						"data",
+						"beta",
+						"action",
+						"insertMany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "insertManyFacilities",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n  \"dataSource\": \"Cluster0\", \r\n  \"database\" : \"SafeFood\", \r\n  \"collection\" : \"Facilities\", \r\n  \"documents\" : {{parsedDataFacilities}}\r\n}"
+				},
+				"url": {
+					"raw": "https://data.mongodb-api.com/app/{{appid}}/endpoint/data/beta/action/insertMany",
+					"protocol": "https",
+					"host": [
+						"data",
+						"mongodb-api",
+						"com"
+					],
+					"path": [
+						"app",
+						"{{appid}}",
+						"endpoint",
+						"data",
+						"beta",
+						"action",
+						"insertMany"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPartners",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8984/getPartners?date=2017-12-24",
+					"host": [
+						"localhost"
+					],
+					"port": "8984",
+					"path": [
+						"getPartners"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2017-12-24"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{apikey}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "api-key",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apikey",
+			"value": "IwSmNtQj2qObiInRSiCzTl8RnvScUF2ynP05YSwTyO23Ae7GNeSHz0s1juXNxGi1"
+		},
+		{
+			"key": "appid",
+			"value": "data-enhxj"
+		},
+		{
+			"key": "parsedDataViolations",
+			"value": null
+		},
+		{
+			"key": "parsedDataInspections",
+			"value": null
+		},
+		{
+			"key": "parsedDataFacilities",
+			"value": null
+		}
+	]
+}

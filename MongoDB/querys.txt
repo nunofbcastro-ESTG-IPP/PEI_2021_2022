@@ -1,0 +1,268 @@
+Create Facilities
+
+[{$group: {
+ _id: {
+  facility_name: '$facility_name',
+  city: '$city'
+ },
+ facility_status: {
+  $push: '$facility_status'
+ },
+ state: {
+  $push: '$state'
+ },
+ zip_code: {
+  $push: '$zip_code'
+ },
+ address: {
+  $push: '$address'
+ },
+ owner_id: {
+  $push: '$owner_id'
+ },
+ owner_name: {
+  $push: '$owner_name'
+ }
+}}, {$addFields: {
+ facility_name: '$_id.facility_name',
+ facility_status: {
+  $first: '$facility_status'
+ },
+ address_info: {
+  address: {
+   $first: '$address'
+  },
+  city: '$_id.city',
+  state: {
+   $first: '$state'
+  },
+  zip_code: {
+   $first: '$zip_code'
+  }
+ },
+ owner: {
+  owner_id: {
+   $first: '$owner_id'
+  },
+  owner_name: {
+   $first: '$owner_name'
+  }
+ }
+}}, {$unset: [
+ '_id',
+ 'facility_status',
+ 'state',
+ 'zip_code',
+ 'address',
+ 'owner_id',
+ 'owner_name'
+]}, {$out: 'Facilities'}]
+
+Create Inspections
+
+[{$addFields: {
+ facility: {
+  facility_name: '$facility_name',
+  state: '$state',
+  city: '$city'
+ }
+}}, {$lookup: {
+ from: 'violations',
+ localField: 'code',
+ foreignField: 'inspection_code',
+ as: 'violations'
+}}, {$addFields: {
+ partner: 'Joaquim',
+ week: '$date',
+ submission_date: '$date'
+}}, {$unset: [
+ 'violations._id',
+ 'violations.violation_description',
+ 'violations.inspection_code',
+ 'facility_name',
+ 'address',
+ 'city',
+ 'state',
+ 'zip_code',
+ 'owner_id',
+ 'owner_name',
+ 'facility_status',
+ 'date'
+]}, {$out: 'Inspections'}]
+
+Create Violations
+
+[{$group: {
+ _id: '$violation_code',
+ violation_description: {
+  $push: '$violation_description'
+ }
+}}, {$set: {
+ code: '$_id',
+ violation_description: {
+  $first: '$violation_description'
+ }
+}}, {$unset: [
+ '_id'
+]}, {$out: 'Violations'}]
+
+Apresentar por parceiro o número de submissões realizadas até então.
+
+[{$group: {
+ _id: '$submission_info.partner',
+ 'NumeroSubmissões': {
+  $sum: 1
+ }
+}}, {$addFields: {
+ Partner: '$_id'
+}}, {$unset: [
+ '_id'
+]}]
+
+Apresentar por semana, o número de submissões realizadas.
+
+[{$group: {
+ _id: '$submission_info.week',
+ 'NumeroSubmissões': {
+  $sum: 1
+ }
+}}, {$addFields: {
+ week: '$_id'
+}}, {$unset: [
+ '_id'
+]}]
+ 
+Apresentar por cidade o número de inspeções e número de não conformidades. 
+
+[{$group: {
+ _id: '$facility.city',
+ 'NumeroInspeções': {
+  $sum: 1
+ },
+ 'NumeroViolações': {
+  $sum: {
+   $size: '$violations'
+  }
+ }
+}}, {$set: {
+ Cidade: '$_id'
+}}, {$unset: [
+ '_id'
+]}]
+
+A percentagem de restaurantes com não conformidades por cidade. 
+
+
+[{$group: {
+ _id: {
+  NomeRestaurante: '$facility.facility_name',
+  Cidade: '$facility.city'
+ },
+ NViolations: {
+  $sum: 1
+ }
+}}, {$group: {
+ _id: '$_id.Cidade',
+ NRestaurantes: {
+  $sum: 1
+ },
+ NRViolations: {
+  $sum: {
+   $cond: [
+    {
+     $gt: [
+      '$NViolations',
+      0
+     ]
+    },
+    1,
+    0
+   ]
+  }
+ }
+}}, {$addFields: {
+ Cidade: '$_id',
+ 'PercentagemViolaçõesRestaurantes': {
+  $divide: [
+   {
+    $multiply: [
+     '$NRViolations',
+     100
+    ]
+   },
+   {
+    $cond: [
+     {
+      $gt: [
+       '$NRestaurantes',
+       0
+      ]
+     },
+     '$NRestaurantes',
+     1
+    ]
+   }
+  ]
+ }
+}}, {$unset: [
+ '_id',
+ 'NRestaurantes',
+ 'NRViolations'
+]}]
+
+A percentagem de inspeções com não conformidades por restaurante.
+
+[{$group: {
+ _id: {
+  NomeRestaurante: '$facility.facility_name',
+  Cidade: '$facility.city'
+ },
+ NViolations: {
+  $sum: {
+   $cond: [
+    {
+     $gt: [
+      {
+       $size: '$violations'
+      },
+      0
+     ]
+    },
+    1,
+    0
+   ]
+  }
+ },
+ 'NInspeções': {
+  $sum: 1
+ }
+}}, {$addFields: {
+ NomeRestaurante: '$_id.NomeRestaurante',
+ Cidade: '$_id.Cidade',
+ 'PercentagemViolaçõesRestaurantes': {
+  $divide: [
+   {
+    $multiply: [
+     '$NViolations',
+     100
+    ]
+   },
+   {
+    $cond: [
+     {
+      $gt: [
+       '$NViolations',
+       0
+      ]
+     },
+     '$NViolations',
+     1
+    ]
+   }
+  ]
+ }
+}}, {$unset: [
+ '_id',
+ 'NViolations',
+ 'NInspeções'
+]}]

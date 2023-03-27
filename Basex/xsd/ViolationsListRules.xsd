@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.trabalhoPEI.pt/ViolationsListRules"
+    targetNamespace="http://www.trabalhoPEI.pt/ViolationsListRules"
+    xmlns:c="http://www.trabalhoPEI.pt/CommonTypes"
+    elementFormDefault="qualified">
+
+    <xs:import schemaLocation="CommonTypes.xsd" namespace="http://www.trabalhoPEI.pt/CommonTypes"/>
+
+    <xs:complexType name="violationsListType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name = "violation" type = "violationListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="violationListType">
+        <xs:sequence>
+            <xs:element name = "violation_code" type = "c:violationCodeType"/>
+            <xs:element name = "violation_description" type = "xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

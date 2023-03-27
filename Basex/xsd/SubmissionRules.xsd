@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.trabalhoPEI.pt/SubmissionRules"
+    targetNamespace="http://www.trabalhoPEI.pt/SubmissionRules"
+    xmlns:i="http://www.trabalhoPEI.pt/InspectionsRules"
+    xmlns:vl="http://www.trabalhoPEI.pt/ViolationsListRules"
+    elementFormDefault="qualified">
+
+    <xs:import schemaLocation="InspectionsRules.xsd" namespace="http://www.trabalhoPEI.pt/InspectionsRules"/>
+    <xs:import schemaLocation="ViolationsListRules.xsd" namespace="http://www.trabalhoPEI.pt/ViolationsListRules"/>
+
+    <xs:element name="submission" type = "submissionType"/>
+
+    <xs:complexType name="submissionType">
+        <xs:sequence>
+            <xs:element name = "submissionInfo" type = "submissionInfoType" maxOccurs="1"/>
+            <xs:element name = "inspections" type = "i:inspectionsType"/>
+            <xs:element name = "violationsList" type = "vl:violationsListType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="submissionInfoType">
+        <xs:sequence>
+            <xs:element name = "submissionDate" type = "xs:dateTime"/>
+            <xs:element name = "week" type = "xs:dateTime"/>  
+            <xs:element name = "year" type = "yearType"/>
+            <xs:element name = "partner" type = "xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="yearType">
+        <xs:restriction base = "xs:string">
+            <xs:pattern value="\d{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

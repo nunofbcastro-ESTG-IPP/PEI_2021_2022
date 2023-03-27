@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns="http://www.trabalhoPEI.pt/SubmissionRules"
+    xsi:schemaLocation="http://www.trabalhoPEI.pt/SubmissionRules SubmissionRules.xsd"
+    xmlns:c="http://www.trabalhoPEI.pt/CommonTypes"
+    xmlns:i = "http://www.trabalhoPEI.pt/InspectionsRules"
+    xmlns:vl = "http://www.trabalhoPEI.pt/ViolationsListRules">
+
+    <submissionInfo>
+        <submissionDate>2022-02-16T00:00:00.000</submissionDate>
+        <week>2022-02-13T00:00:00.000</week>
+        <year>2022</year>
+        <partner>Carlos Ribeiro</partner>
+    </submissionInfo>
+
+    <inspections>
+        <i:inspection>
+            <i:code>DWN23E0RT</i:code>
+            <i:date>2022-02-14T00:00:00.000</i:date>
+            <i:facilityName>EAST COFFEE SHOP</i:facilityName>
+            <i:rating>
+                <i:score>80</i:score>
+                <i:grade>B</i:grade>
+            </i:rating>
+            <i:service>ROUTINE INSPECTION</i:service>
+            <i:address>
+                <c:address_description>3777 N DRAGON BLVD</c:address_description>
+                <c:city>LOS ANGELES</c:city>
+                <c:state>CA</c:state>
+                <c:zip_code>90777</c:zip_code>
+            </i:address>
+            <i:owner>
+                <i:owner_id>OW0988213</i:owner_id>
+                <i:owner_name>EAST COFFEE SHOP LLC</i:owner_name>
+            </i:owner>
+            <i:description>RESTAURANT (30-60) SEATS HIGH RISK</i:description>
+            <i:facility_status>ACTIVE</i:facility_status>
+            <i:violations>
+                <i:violation>
+                    <i:violation_code>F007</i:violation_code>
+                    <i:violation_status>OUT OF COMPLIANCE</i:violation_status>
+                </i:violation>
+            </i:violations>
+        </i:inspection>
+    
+        <i:inspection>
+            <i:code>DJH12E0FD</i:code>
+            <i:date>2022-02-15T00:00:00.000</i:date>
+            <i:facilityName>WEST'S</i:facilityName>
+            <i:rating>
+                <i:score>75</i:score>
+                <i:grade>C</i:grade>
+            </i:rating>
+            <i:service>ROUTINE INSPECTION</i:service>
+            <i:address>
+                <c:address_description>3872 N DRINK BRF</c:address_description>
+                <c:city>SAN JOSE</c:city>
+                <c:state>CA</c:state>
+                <c:zip_code>95673</c:zip_code>
+            </i:address>
+            <i:owner>
+                <i:owner_id>OW0253121</i:owner_id>
+                <i:owner_name>WEST COFFEE SHOP LLC</i:owner_name>
+            </i:owner>
+            <i:description>RESTAURANT (60-120) SEATS HIGH RISK</i:description>
+            <i:facility_status>ACTIVE</i:facility_status>
+            <i:violations>
+                <i:violation>
+                    <i:violation_code>F033</i:violation_code>
+                    <i:violation_status>OUT OF COMPLIANCE</i:violation_status>
+                </i:violation>
+            </i:violations>
+        </i:inspection>
+    </inspections>
+
+    <violationsList>
+        <vl:violation>
+            <vl:violation_code>F033</vl:violation_code>
+            <vl:violation_description># 33. Nonfood-contact surfaces clean and in good repair</vl:violation_description>
+        </vl:violation>
+
+        <vl:violation>
+            <vl:violation_code>F007</vl:violation_code>
+            <vl:violation_description># 07. Proper hot and cold holding temperatures</vl:violation_description>
+        </vl:violation>
+    </violationsList>
+</submission>

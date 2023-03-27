@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns="http://www.trabalhoPEI.pt/InspectionsRules"
+    targetNamespace="http://www.trabalhoPEI.pt/InspectionsRules"
+    xmlns:c="http://www.trabalhoPEI.pt/CommonTypes"
+    elementFormDefault="qualified">
+
+    <xs:import schemaLocation="CommonTypes.xsd" namespace="http://www.trabalhoPEI.pt/CommonTypes"/>
+
+    <xs:complexType name="inspectionsType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name = "inspection" type = "inspectionType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="inspectionType">
+        <xs:sequence>
+            <xs:element name = "code" type = "c:codeType"/>
+            <xs:element name = "date" type = "xs:dateTime"/>
+            <xs:element name = "facilityName" type = "xs:string"/>
+            <xs:element name = "rating" type = "ratingType"/>
+            <xs:element name = "service" type = "serviceType"/>
+            <xs:element name = "address" type = "c:addressType"/>
+            <xs:element name = "owner" type = "ownerType"/>
+            <xs:element name = "description" type = "xs:string"/>
+            <xs:element name = "facility_status" type = "facilityStatusType"/>
+            <xs:element name = "violations" type = "violationsType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="violationsType">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name = "violation" type = "violationType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="violationType">
+        <xs:sequence>
+            <xs:element name = "violation_code" type = "c:violationCodeType"/>
+            <xs:element name = "violation_status" type = "violation_status"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="violation_status">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value="HOUSING NON-CRITICAL"/>
+            <xs:enumeration value="OUT OF COMPLIANCE"/>
+            <xs:enumeration value="VIOLATION"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ratingType">
+        <xs:sequence>
+            <xs:element name = "score" type = "scoreType"/>
+            <xs:element name = "grade" type = "gradeType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="scoreType">
+        <xs:restriction base = "xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="gradeType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value="A"/>
+            <xs:enumeration value="B"/>
+            <xs:enumeration value="C"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="serviceType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value="ROUTINE INSPECTION"/>
+            <xs:enumeration value="OWNER INITIATED ROUTINE INSPECT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ownerType">
+        <xs:sequence>
+            <xs:element name = "owner_id" type = "c:codeType"/>
+            <xs:element name = "owner_name" type = "xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="facilityStatusType">
+        <xs:restriction base = "xs:string">
+            <xs:enumeration value="ACTIVE"/>
+            <xs:enumeration value="INACTIVE"/>
+        </xs:restriction>
+    </xs:simpleType>   
+</xs:schema>

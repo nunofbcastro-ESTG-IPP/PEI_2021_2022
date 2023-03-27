@@ -1,0 +1,5 @@
+db.Facilities.createIndex( { "facility_name": 1, "address_info.city": 1 }, {unique:true} )
+
+db.Violations.createIndex( { code: 1 }, {unique:true} )
+
+db.Inspections.createIndex( { code: 1 }, {unique:true} )
